@@ -140,7 +140,7 @@ function removeColors() {
 function checkTries() {
     triesBlock.textContent = `Осталось ${tries}🖱️`;
 
-    if (isFirstTurnCompleted) checkResult();
+    checkResult();
 }
 
 function checkResult() {
@@ -152,6 +152,10 @@ function checkResult() {
     });
 
     const isVictory = (result === code);
+
+    if (isVictory && !isFirstTurnCompleted) {
+        moveRandom();
+    }
 
     if (isVictory || !tries) {
         document.querySelector('.wrapper').style.display = 'none';
