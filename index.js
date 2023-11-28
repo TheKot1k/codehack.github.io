@@ -2,11 +2,13 @@ const buttons = document.querySelectorAll('button');
 const triesBlock = document.querySelector('#tries');
 const answerBlock = document.querySelector('#answer');
 
-let tries = enterTries();
-checkTries();
+let isFirstTurnCompleted = false;
 
 const code = generateCode();
+let tries = enterTries();
+
 moveRandom();
+checkTries();
 
 removeColors();
 
@@ -70,6 +72,8 @@ function rotate(button) {
     if (button.target) {
         buttonSide = button.target.classList[1];
         buttonDirection = button.target.classList[2];
+
+        isFirstTurnCompleted = true;
     } else {
         buttonSide = button.classList[0];
         buttonDirection = button.classList[1];
@@ -115,14 +119,14 @@ function enterTries() {
 
     if (isOutOfRange || isNaN(tries)) {
         tries = 3;
-        alert('Некорректное значение! Установлено 3');
+        alert('Некорректное значение! Установлено значение по умолчанию (3)');
     }
 
     return tries;
 }
 
 function removeColors() {
-    const isConfirm = confirm('Уравнять цвета ячеек? (Усложнение)');
+    const isConfirm = confirm('Уравнять цвета ячеек (Усложнение)? Иначе синий -> красный');
 
     if (!isConfirm) return;
 
@@ -136,8 +140,6 @@ function removeColors() {
 function checkTries() {
     triesBlock.textContent = `Осталось ${tries}🖱️`;
 
-    if (tries > 0) return;
-
     checkResult();
 }
 
@@ -149,17 +151,26 @@ function checkResult() {
         result += cell.textContent;
     });
 
-    document.querySelector('.wrapper').style.display = 'none';
+    const isVictory = (result === code);
 
-    const victoryElement = document.createElement('div');
-    victoryElement.classList.add('block');
-    victoryElement.style.fontSize = '42px';
-
-    if (result === code) {
-        victoryElement.textContent = 'Победа! 🥳';
-    } else {
-        victoryElement.textContent = 'Неверно! 💀';
+    if (isVictory && !isFirstTurnCompleted) {
+        moveRandom();
+        return;
     }
 
-    document.body.append(victoryElement);
+    if (isVictory || !tries) {
+        document.querySelector('.wrapper').style.display = 'none';
+
+        const victoryElement = document.createElement('div');
+        victoryElement.classList.add('block');
+        victoryElement.style.fontSize = '42px';
+
+        if (isVictory) {
+            victoryElement.textContent = 'Победа! 🥳';
+        } else {
+            victoryElement.textContent = 'Неверно! 💀';
+        }
+
+        document.body.append(victoryElement);
+    }
 }
