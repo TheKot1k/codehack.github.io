@@ -66,19 +66,28 @@ body {
     border-radius: 1px;
 }
 
-.left {
-    background: var(--red);
+#left-top {
+    background: linear-gradient(-45deg, var(--red) 90%, var(--mark) 95%);
 }
 
-.right {
-    background: var(--blue);
+#left-bottom {
+    background: linear-gradient(-135deg, var(--red) 90%, var(--mark) 95%);
 }
 
-.center.right {
+#right-top {
+    background: linear-gradient(45deg, var(--blue) 90%, var(--mark) 95%);
+}
+
+#right-bottom {
+    background: linear-gradient(135deg, var(--blue) 90%, var(--mark) 95%);
+}
+
+
+.center-cell.right-cell {
     background: linear-gradient(90deg, var(--purple) 50%, var(--blue));
 }
 
-.center.left {
+.center-cell.left-cell {
     background: linear-gradient(90deg, var(--red), var(--purple) 50%);
 }
 
