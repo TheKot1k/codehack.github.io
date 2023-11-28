@@ -126,7 +126,7 @@ function enterTries() {
 }
 
 function removeColors() {
-    const isConfirm = confirm('Уравнять цвета ячеек? (Усложнение)');
+    const isConfirm = confirm('Уравнять цвета ячеек (Усложнение)? Иначе синий -> красный');
 
     if (!isConfirm) return;
 
