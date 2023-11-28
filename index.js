@@ -155,6 +155,7 @@ function checkResult() {
 
     if (isVictory && !isFirstTurnCompleted) {
         moveRandom();
+        return;
     }
 
     if (isVictory || !tries) {
