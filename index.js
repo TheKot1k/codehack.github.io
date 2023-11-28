@@ -119,7 +119,7 @@ function enterTries() {
 
     if (isOutOfRange || isNaN(tries)) {
         tries = 3;
-        alert('Некорректное значение! Установлено 3');
+        alert('Некорректное значение! Установлено значение по умолчанию (3)');
     }
 
     return tries;
