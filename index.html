@@ -7,14 +7,23 @@
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/index.css">
     <script defer src="index.js"></script>
-    <title>Подбор кода</title>
+    <title>CodeHack</title>
 </head>
 
 <body>
+    <div class="start-wrapper">
+        <h1>C<span>🔒️</span>deHack</h1>
+        <div class="number-wrapper">
+            <div class="block number-field">Количество прокручиваний</div>
+            <input id="number-input" class="block" type="number" value="3" min="1" max="100">
+        </div>
+        <div class="block color-field">Разные цвета ячеек <input id="color-input" type="checkbox"></div>
+        <button id="start" class="block">Начать</button>
+    </div>
     <div class="wrapper">
         <div class="info-wrapper">
             <div id="tries" class="block"></div>
-            <div id="answer" class="block">F9H1<br>Z5P8</div>
+            <div id="code" class="block">F9H1<br>Z5P8</div>
         </div>
         <div class="panel">
             <div id="left-top" class="cell left-cell"></div>

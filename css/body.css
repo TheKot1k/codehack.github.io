@@ -28,9 +28,9 @@ body {
     animation: bganimation 15s 0s infinite;
 }
 
-.wrapper {
+.wrapper,
+.info-wrapper {
     display: flex;
-    flex-direction: column;
 }
 
 .panel {
@@ -38,11 +38,6 @@ body {
     flex-wrap: wrap;
     width: 600px;
     margin-bottom: 15px;
-}
-
-.info-wrapper {
-    display: flex;
-    flex-direction: row;
 }
 
 #tries {
@@ -82,23 +77,12 @@ body {
     background: linear-gradient(135deg, var(--blue) 90%, var(--mark) 95%);
 }
 
-
 .center-cell.right-cell {
     background: linear-gradient(90deg, var(--purple) 50%, var(--blue));
 }
 
 .center-cell.left-cell {
     background: linear-gradient(90deg, var(--red), var(--purple) 50%);
-}
-
-.bottom-wrapper {
-    display: flex;
-    justify-content: space-between;
-}
-
-.buttons-block {
-    display: flex;
-    flex-direction: column;
 }
 
 .block {
@@ -112,12 +96,75 @@ body {
     border-radius: 6px;
     background: var(--black-transparent);
     margin-bottom: 10px;
+    user-select: none;
+}
+
+.buttons-block {
+    display: flex;
+    flex-direction: column;
 }
 
 button:hover,
 button:active {
     background: var(--black-more-transparent);
     cursor: pointer;
+}
+
+.bottom-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.start-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 25%;
+}
+
+h1 {
+    color: white;
+    font-size: 72px;
+    margin: 0 0 30px 0;
+    text-align: center;
+    user-select: none;
+}
+
+h1 span {
+    margin: 0 -16px 0 -16px;
+}
+
+.number-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.number-wrapper input {
+    font-size: 24px;
+    width: 20%;
+}
+
+.number-field {
+    text-align: center;
+    justify-content: space-between;
+    margin-right: 10px;
+    max-width: 100%;
+    flex-grow: 1;
+}
+
+.color-field {
+    display: flex;
+    justify-content: space-between;
+}
+
+.color-field input {
+    margin: 0 0 0 15px;
+    width: 20px;
+    height: 20px;
+}
+
+#start-button {
+    margin: 0;
 }
 
 #reset {
