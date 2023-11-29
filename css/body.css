@@ -119,3 +119,14 @@ button:active {
     background: var(--black-more-transparent);
     cursor: pointer;
 }
+
+#reset {
+    font-size: 42px;
+    margin: 0;
+    padding: 8px;
+}
+
+#victory {
+    font-size: 42px;
+    margin: 0 10px 0 0;
+}

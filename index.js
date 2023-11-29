@@ -1,16 +1,17 @@
-const buttons = document.querySelectorAll('button');
-const triesBlock = document.querySelector('#tries');
-const answerBlock = document.querySelector('#answer');
+const buttons = document.querySelectorAll('.buttons-block > button');
+const triesElement = document.querySelector('#tries');
+const answerElement = document.querySelector('#answer');
+const restartElement = document.querySelector('#reset');
+const victoryElement = document.querySelector('#victory');
 
-let isFirstTurnCompleted = false;
+const startElements = document.querySelectorAll('.cell');
 
-const code = generateCode();
-let tries = enterTries();
+const endWrapper = document.querySelector('.end-wrapper');
+const wrapper = document.querySelector('.wrapper');
 
-moveRandom();
-checkTries();
-
-removeColors();
+let code;
+let tries;
+let isFirstTurnCompleted;
 
 buttons.forEach(button => {
     button.addEventListener('click', (button) => {
@@ -18,11 +19,34 @@ buttons.forEach(button => {
     });
 });
 
+restartElement.addEventListener('click', () => {
+    start();
+})
+
+start();
+
+function start() {
+    endWrapper.style.display = 'none';
+    wrapper.style.display = 'block';
+
+    isFirstTurnCompleted = false;
+
+    resetPositions();
+
+    code = generateCode();
+    tries = enterTries();
+
+    moveRandom();
+    checkTries();
+
+    removeColors();
+}
+
 function generateCode() {
     const code = Math.random().toString(16).slice(2, 10).toUpperCase();
     const cells = document.querySelectorAll('.cell');
 
-    answerBlock.innerHTML = `${code.slice(0, -4)} <br> ${code.slice(4, 8)}`;
+    answerElement.innerHTML = `${code.slice(0, -4)} <br> ${code.slice(4, 8)}`;
 
     cells.forEach((cell, id) => {
         cell.textContent = code[id];
@@ -109,6 +133,7 @@ function rotate(button) {
     actCells[indexOrd[2] + indexMod].after(actCells[indexOrd[3] + indexMod]);
 
     --tries;
+    console.log(`Осталось ${tries}`);
     checkTries();
 }
 
@@ -122,6 +147,7 @@ function enterTries() {
         alert('Некорректное значение! Установлено значение по умолчанию (3)');
     }
 
+    console.log(`Установлено ${tries}`);
     return tries;
 }
 
@@ -138,7 +164,7 @@ function removeColors() {
 }
 
 function checkTries() {
-    triesBlock.textContent = `Осталось ${tries}🖱️`;
+    triesElement.textContent = `Осталось ${tries}🖱️`;
 
     checkResult();
 }
@@ -159,18 +185,26 @@ function checkResult() {
     }
 
     if (isVictory || !tries) {
-        document.querySelector('.wrapper').style.display = 'none';
-
-        const victoryElement = document.createElement('div');
-        victoryElement.classList.add('block');
-        victoryElement.style.fontSize = '42px';
+        wrapper.style.display = 'none';
+        endWrapper.style.display = 'flex';
 
         if (isVictory) {
             victoryElement.textContent = 'Победа! 🥳';
         } else {
             victoryElement.textContent = 'Неверно! 💀';
         }
-
-        document.body.append(victoryElement);
     }
+}
+
+function resetPositions() {
+    const elements = document.querySelectorAll('.cell');
+    const panel = document.querySelector('.panel');
+    
+    elements.forEach(element => {
+        element.remove();
+    });
+
+    startElements.forEach(element => {
+        panel.append(element);
+    });
 }
