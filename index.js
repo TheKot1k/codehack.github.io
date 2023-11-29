@@ -20,12 +20,12 @@ buttons.forEach(button => {
 });
 
 restartElement.addEventListener('click', () => {
-    start();
+    startGame();
 })
 
-start();
+startGame();
 
-function start() {
+function startGame() {
     endWrapper.style.display = 'none';
     wrapper.style.display = 'block';
 
