@@ -1,32 +1,41 @@
-const buttons = document.querySelectorAll('.buttons-block > button');
+const controlButtons = document.querySelectorAll('.buttons-block > button');
 const triesElement = document.querySelector('#tries');
-const answerElement = document.querySelector('#answer');
+const codeElement = document.querySelector('#code');
 const restartElement = document.querySelector('#reset');
 const victoryElement = document.querySelector('#victory');
+const startElement = document.querySelector('#start');
 
-const startElements = document.querySelectorAll('.cell');
+const initialElements = document.querySelectorAll('.cell');
 
+const startWrapper = document.querySelector('.start-wrapper');
 const endWrapper = document.querySelector('.end-wrapper');
 const wrapper = document.querySelector('.wrapper');
 
-let code;
-let tries;
-let isFirstTurnCompleted;
+wrapper.style.display = 'none';
+endWrapper.style.display = 'none';
 
-buttons.forEach(button => {
+let code;
+let isFirstTurnCompleted;
+let tries;
+let isRemoveColors;
+
+controlButtons.forEach(button => {
     button.addEventListener('click', (button) => {
         rotate(button);
     });
 });
 
 restartElement.addEventListener('click', () => {
-    startGame();
-})
+    backToMenu();
+});
 
-startGame();
+startElement.addEventListener('click', () => {
+    startGame();
+});
 
 function startGame() {
     endWrapper.style.display = 'none';
+    startWrapper.style.display = 'none';
     wrapper.style.display = 'block';
 
     isFirstTurnCompleted = false;
@@ -34,7 +43,8 @@ function startGame() {
     resetPositions();
 
     code = generateCode();
-    tries = enterTries();
+
+    enterTries();
 
     moveRandom();
     checkTries();
@@ -46,7 +56,7 @@ function generateCode() {
     const code = Math.random().toString(16).slice(2, 10).toUpperCase();
     const cells = document.querySelectorAll('.cell');
 
-    answerElement.innerHTML = `${code.slice(0, -4)} <br> ${code.slice(4, 8)}`;
+    codeElement.innerHTML = `${code.slice(0, -4)} <br> ${code.slice(4, 8)}`;
 
     cells.forEach((cell, id) => {
         cell.textContent = code[id];
@@ -138,7 +148,7 @@ function rotate(button) {
 }
 
 function enterTries() {
-    let tries = +prompt('Сколько раз прокрутить? (0 < N <= 100)', 3);
+    tries = document.querySelector('#number-input').value;
 
     const isOutOfRange = tries > 100 || tries <= 0;
 
@@ -148,13 +158,12 @@ function enterTries() {
     }
 
     console.log(`Установлено ${tries}`);
-    return tries;
 }
 
 function removeColors() {
-    const isConfirm = confirm('Уравнять цвета ячеек (Усложнение)? Иначе красный -> синий');
+    isRemoveColors = !document.querySelector('#color-input').checked;
 
-    if (!isConfirm) return;
+    if (!isRemoveColors) return;
 
     const cells = document.querySelectorAll('.cell');
 
@@ -204,7 +213,12 @@ function resetPositions() {
         aElement.remove();
     });
 
-    startElements.forEach(sElement => {
-        panel.append(sElement);
+    initialElements.forEach(iElement => {
+        panel.append(iElement);
     });
+}
+
+function backToMenu() {
+    endWrapper.style.display = 'none';
+    startWrapper.style.display = 'flex';
 }
