@@ -2,7 +2,7 @@ const controlButtons = document.querySelectorAll('.buttons-block > button');
 const triesElement = document.querySelector('#tries');
 const codeElement = document.querySelector('#code');
 const restartElement = document.querySelector('#reset');
-const victoryElement = document.querySelector('#victory');
+const resultElement = document.querySelector('#result');
 const startElement = document.querySelector('#start');
 
 const initialElements = document.querySelectorAll('.cell');
@@ -198,9 +198,9 @@ function checkResult() {
         endWrapper.style.display = 'flex';
 
         if (isVictory) {
-            victoryElement.textContent = 'Победа! 🥳';
+            resultElement.textContent = 'Победа! 🥳';
         } else {
-            victoryElement.textContent = 'Неверно! 💀';
+            resultElement.textContent = 'Неверно! 💀';
         }
     }
 }
@@ -208,7 +208,7 @@ function checkResult() {
 function resetPositions() {
     const actualElements = document.querySelectorAll('.cell');
     const panel = document.querySelector('.panel');
-    
+
     actualElements.forEach(aElement => {
         aElement.remove();
     });
