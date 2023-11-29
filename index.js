@@ -197,14 +197,14 @@ function checkResult() {
 }
 
 function resetPositions() {
-    const elements = document.querySelectorAll('.cell');
+    const actualElements = document.querySelectorAll('.cell');
     const panel = document.querySelector('.panel');
     
-    elements.forEach(element => {
-        element.remove();
+    actualElements.forEach(aElement => {
+        aElement.remove();
     });
 
-    startElements.forEach(element => {
-        panel.append(element);
+    startElements.forEach(sElement => {
+        panel.append(sElement);
     });
 }
