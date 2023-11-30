@@ -1,0 +1,52 @@
+.start-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 25%;
+    animation: magnification 0.75s 0s;
+}
+
+h1 {
+    color: white;
+    font-size: 72px;
+    margin: 0 0 30px 0;
+    text-align: center;
+    user-select: none;
+}
+
+h1 span {
+    margin: 0 -16px 0 -16px;
+}
+
+.number-wrapper,
+.color-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+#number-input {
+    font-size: 24px;
+    width: 20%;
+}
+
+.number-field {
+    justify-content: space-between;
+    margin-right: 10px;
+    width: 100%;
+}
+
+.color-field {
+    justify-content: space-between;
+    margin-right: 10px;
+    width: 100%;
+}
+
+#color-input {
+    margin: 0;
+    width: 20px;
+    height: 20px;
+}
+
+#start-button {
+    margin: 0;
+}

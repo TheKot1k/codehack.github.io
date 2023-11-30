@@ -200,7 +200,7 @@ function checkResult() {
         if (isVictory) {
             resultElement.textContent = 'Победа! 🥳';
         } else {
-            resultElement.textContent = 'Неверно! 💀';
+            resultElement.textContent = 'Неверно 💀';
         }
     }
 }
