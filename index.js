@@ -143,7 +143,6 @@ function rotate(event) {
     actCells[indexOrd[2] + indexMod].after(actCells[indexOrd[3] + indexMod]);
 
     --tries;
-    console.log(`Осталось ${tries}`);
     checkTries();
 }
 
@@ -156,8 +155,6 @@ function enterTries() {
         tries = 3;
         alert('Некорректное значение! Установлено значение по умолчанию (3)');
     }
-
-    console.log(`Установлено ${tries}`);
 }
 
 function removeColors() {
