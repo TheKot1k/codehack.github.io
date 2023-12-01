@@ -20,8 +20,8 @@ let tries;
 let isRemoveColors;
 
 controlButtons.forEach(button => {
-    button.addEventListener('click', (button) => {
-        rotate(button);
+    button.addEventListener('click', (event) => {
+        rotate(event);
     });
 });
 
@@ -99,24 +99,24 @@ function moveRandom() {
 
 }
 
-function rotate(button) {
-    let buttonSide;
-    let buttonDirection;
+function rotate(event) {
+    let eventSide;
+    let eventDirection;
 
-    if (button.target) {
-        buttonSide = button.target.classList[1];
-        buttonDirection = button.target.classList[2];
+    if (event.target) {
+        eventSide = event.target.classList[1];
+        eventDirection = event.target.classList[2];
 
         isFirstTurnCompleted = true;
     } else {
-        buttonSide = button.classList[0];
-        buttonDirection = button.classList[1];
+        eventSide = event.classList[0];
+        eventDirection = event.classList[1];
     }
 
     let indexMod;
     let indexOrd;
 
-    switch (buttonSide) {
+    switch (eventSide) {
         case 'left-button':
             indexMod = -1;
             break;
@@ -128,7 +128,7 @@ function rotate(button) {
             break;
     }
 
-    switch (buttonDirection) {
+    switch (eventDirection) {
         case 'clockwise':
             indexOrd = [1, 5, 6, 2];
             break;
@@ -143,7 +143,6 @@ function rotate(button) {
     actCells[indexOrd[2] + indexMod].after(actCells[indexOrd[3] + indexMod]);
 
     --tries;
-    console.log(`Осталось ${tries}`);
     checkTries();
 }
 
@@ -156,8 +155,6 @@ function enterTries() {
         tries = 3;
         alert('Некорректное значение! Установлено значение по умолчанию (3)');
     }
-
-    console.log(`Установлено ${tries}`);
 }
 
 function removeColors() {
@@ -200,7 +197,7 @@ function checkResult() {
         if (isVictory) {
             resultElement.textContent = 'Победа! 🥳';
         } else {
-            resultElement.textContent = 'Неверно! 💀';
+            resultElement.textContent = 'Неверно 💀';
         }
     }
 }

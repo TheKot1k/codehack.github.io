@@ -2,6 +2,12 @@
     --red: rgb(206, 75, 75);
     --purple: rgb(167, 59, 167);
     --blue: rgb(79, 79, 185);
+
+    --bg-pink: rgb(250, 139, 255);
+    --bg-yellow: rgb(236, 255, 127);
+    --bg-blue: rgb(139, 209, 255);
+    --bg-cyan: rgb(43, 210, 255);
+
     --mark: rgb(253, 239, 109);
 
     --black-transparent: rgba(0, 0, 0, .75);

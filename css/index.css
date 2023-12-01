@@ -1,2 +1,6 @@
 @import url(./colors.css);
-@import url(./body.css);
+@import url(./animations.css);
+@import url(./global.css);
+@import url(./start.css);
+@import url(./wrapper.css);
+@import url(./end.css);

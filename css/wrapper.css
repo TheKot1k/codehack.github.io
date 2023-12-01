@@ -1,0 +1,83 @@
+.wrapper {
+    display: flex;
+    animation: magnification 0.75s 0s;
+    min-width: 300px;
+    margin: 0 20px;
+}
+
+.info-wrapper {
+    display: flex;
+}
+
+.panel {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    margin-bottom: 15px;
+}
+
+#tries {
+    font-size: 24px;
+    margin-right: 10px;
+    width: 100%;
+}
+
+#answer {
+    font-size: 16px;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid var(--black-transparent);
+    border-radius: 1px;
+}
+
+#left-top {
+    background: linear-gradient(-45deg, var(--red) 90%, var(--mark) 95%);
+}
+
+#left-bottom {
+    background: linear-gradient(-135deg, var(--red) 90%, var(--mark) 95%);
+}
+
+#right-top {
+    background: linear-gradient(45deg, var(--blue) 90%, var(--mark) 95%);
+}
+
+#right-bottom {
+    background: linear-gradient(135deg, var(--blue) 90%, var(--mark) 95%);
+}
+
+.center-cell.right-cell {
+    background: linear-gradient(90deg, var(--purple) 50%, var(--blue));
+}
+
+.center-cell.left-cell {
+    background: linear-gradient(90deg, var(--red), var(--purple) 50%);
+}
+
+.bottom-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 680px) {
+    .panel {
+        width: 300px;
+    }
+
+    .cell {
+        font-size: 30px;
+        width: 75px;
+        height: 75px;
+    }
+
+    #tries {
+        margin-right: 8px;
+    }
+}
