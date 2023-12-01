@@ -1,6 +1,8 @@
 .wrapper {
     display: flex;
     animation: magnification 0.75s 0s;
+    min-width: 300px;
+    margin: 0 20px;
 }
 
 .info-wrapper {
@@ -33,7 +35,6 @@
     height: 150px;
     border: 1px solid var(--black-transparent);
     border-radius: 1px;
-    user-select: none;
 }
 
 #left-top {
@@ -63,4 +64,20 @@
 .bottom-wrapper {
     display: flex;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 680px) {
+    .panel {
+        width: 300px;
+    }
+
+    .cell {
+        font-size: 30px;
+        width: 75px;
+        height: 75px;
+    }
+
+    #tries {
+        margin-right: 8px;
+    }
 }

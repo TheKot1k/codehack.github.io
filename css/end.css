@@ -1,5 +1,8 @@
 .end-wrapper {
     animation: magnification 0.75s 0s;
+    min-width: 310px;
+    display: flex;
+    justify-content: center;
 }
 
 #reset {
@@ -11,4 +14,14 @@
 #result {
     font-size: 42px;
     margin: 0 10px 0 0;
+}
+
+@media screen and (max-width: 680px) {
+    #result {
+        font-size: 32px;
+    }
+
+    #reset {
+        font-size: 32px;
+    }
 }

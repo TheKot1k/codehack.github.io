@@ -1,13 +1,16 @@
 * {
     box-sizing: border-box;
     font-family: sans-serif;
+    user-select: none;
 }
 
 body {
-    height: 98vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
+    margin: 0;
 
     background: linear-gradient(135deg, var(--bg-pink), var(--bg-blue) 30%, var(--bg-yellow), var(--bg-cyan));
     background-size: 400%;
@@ -31,10 +34,22 @@ body {
 .buttons-block {
     display: flex;
     flex-direction: column;
+    margin: 0 2px;
 }
 
 button:hover,
 button:active {
     background: var(--black-more-transparent);
     cursor: pointer;
+}
+
+@media screen and (max-width: 680px) {
+    .block {
+        font-size: 18px;
+        padding: 8px 8px;
+    }
+
+    .buttons-block button {
+        font-size: 13px;
+    }
 }

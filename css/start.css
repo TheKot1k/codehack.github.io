@@ -2,8 +2,9 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    max-width: 25%;
+    min-width: 310px;
     animation: magnification 0.75s 0s;
+    margin: 0 20px;
 }
 
 h1 {
@@ -11,11 +12,10 @@ h1 {
     font-size: 72px;
     margin: 0 0 30px 0;
     text-align: center;
-    user-select: none;
 }
 
 h1 span {
-    margin: 0 -16px 0 -16px;
+    margin: 0 -16px;
 }
 
 .number-wrapper,
@@ -49,4 +49,27 @@ h1 span {
 
 #start-button {
     margin: 0;
+}
+
+@media screen and (max-width: 680px) {
+    h1 {
+        font-size: 54px;
+    }
+
+    h1 span {
+        margin: 0 -14px;
+    }
+
+    #number-input {
+        /* font-size: 18px; */
+        width: 30%;
+    }
+
+    .number-field {
+        margin-right: 5px;
+    }
+
+    .color-field {
+        margin-right: 5px;
+    }
 }
