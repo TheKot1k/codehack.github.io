@@ -14,10 +14,12 @@ const wrapper = document.querySelector('.wrapper');
 wrapper.style.display = 'none';
 endWrapper.style.display = 'none';
 
-let code;
-let isFirstTurnCompleted;
-let tries;
-let isRemoveColors;
+const selectedColors = {};
+
+let code = null;
+let isFirstTurnCompleted = null;
+let tries = null;
+let isColorMode = null;
 
 controlButtons.forEach(button => {
     button.addEventListener('click', (event) => {
@@ -47,19 +49,21 @@ function startGame() {
     enterTries();
 
     moveRandom();
-    checkTries();
+    setTries();
 
-    removeColors();
+    setColors();
 }
 
 function generateCode() {
     const code = Math.random().toString(16).slice(2, 10).toUpperCase();
     const cells = document.querySelectorAll('.cell');
 
-    codeElement.innerHTML = `${code.slice(0, -4)} <br> ${code.slice(4, 8)}`;
+    for (let i = 0; i < code.length; ++i) {
+        codeElement.innerHTML += `<span>${code[i]}</span>`;
+    }
 
-    cells.forEach((cell, id) => {
-        cell.textContent = code[id];
+    cells.forEach((cell, index) => {
+        cell.textContent = code[index];
     });
 
     return code;
@@ -100,23 +104,23 @@ function moveRandom() {
 }
 
 function rotate(event) {
-    let eventSide;
-    let eventDirection;
+    let buttonSide;
+    let buttonDirection;
 
     if (event.target) {
-        eventSide = event.target.classList[1];
-        eventDirection = event.target.classList[2];
+        buttonSide = event.target.classList[1];
+        buttonDirection = event.target.classList[2];
 
         isFirstTurnCompleted = true;
     } else {
-        eventSide = event.classList[0];
-        eventDirection = event.classList[1];
+        buttonSide = event.classList[0];
+        buttonDirection = event.classList[1];
     }
 
     let indexMod;
     let indexOrd;
 
-    switch (eventSide) {
+    switch (buttonSide) {
         case 'left-button':
             indexMod = -1;
             break;
@@ -128,7 +132,7 @@ function rotate(event) {
             break;
     }
 
-    switch (eventDirection) {
+    switch (buttonDirection) {
         case 'clockwise':
             indexOrd = [1, 5, 6, 2];
             break;
@@ -143,7 +147,7 @@ function rotate(event) {
     actCells[indexOrd[2] + indexMod].after(actCells[indexOrd[3] + indexMod]);
 
     --tries;
-    checkTries();
+    setTries();
 }
 
 function enterTries() {
@@ -157,19 +161,58 @@ function enterTries() {
     }
 }
 
-function removeColors() {
-    isRemoveColors = !document.querySelector('#color-input').checked;
+function setColors() {
+    const colors = [
+        '#606C38',
+        '#FCC8B2',
+        '#8E8DBE',
+        '#D7FF9F',
+        '#FFF689',
+        '#6096BA',
+        '#5D2A42',
+        '#D4D2A5',
+        '#D7FCD4',
+        '#B68F40',
+        '#F95738',
+        '#F4D35E',
+        '#F28F3B',
+        '#69B578',
+        '#995FA3',
+        '#F2BEFC',
+        '#456990',
+        '#DC965A',
+        '#ADA9B7',
+        '#B7245C',
+        '#49BEAA',
+        '#7C3238',
+        '#6457A6'
+    ];
 
-    if (!isRemoveColors) return;
+    isColorMode = document.querySelector('#color-input').checked;
 
-    const cells = document.querySelectorAll('.cell');
+    if (!isColorMode) return;
 
-    cells.forEach(cell => {
-        cell.style.background = 'linear-gradient(45deg, #e07a1e 0%, #e4c183 100%)';
+    for (let i = 0; i < initialElements.length + 1; ++i) {
+        if (Object.keys(selectedColors).length !== i) --i;
+
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        selectedColors[randomColor] = null;
+    }
+
+    const colorsKeys = Object.keys(selectedColors);
+    const codeSymbols = document.querySelectorAll('#code span');
+
+    initialElements.forEach((element, index) => {
+        element.style.backgroundImage = 'unset';
+        element.style.background = `${colorsKeys[index]}`;
+    });
+
+    codeSymbols.forEach((codeSymbol, index) => {
+        codeSymbol.style.color = `${colorsKeys[index]}`;
     });
 }
 
-function checkTries() {
+function setTries() {
     triesElement.textContent = `Осталось ${tries}🖱️`;
 
     checkResult();
@@ -212,6 +255,8 @@ function resetPositions() {
 
     initialElements.forEach(iElement => {
         panel.append(iElement);
+
+        iElement.style.backgroundImage = 'linear-gradient(45deg, #e07a1e 0%, #e4c183 100%)';
     });
 }
 
