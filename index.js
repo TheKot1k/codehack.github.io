@@ -1,4 +1,3 @@
-const controlButtons = document.querySelectorAll('.buttons-block > button');
 const triesElement = document.querySelector('#tries');
 const codeElement = document.querySelector('#code');
 const restartElement = document.querySelector('#reset');
@@ -10,6 +9,7 @@ const initialElements = document.querySelectorAll('.cell');
 const startWrapper = document.querySelector('.start-wrapper');
 const endWrapper = document.querySelector('.end-wrapper');
 const wrapper = document.querySelector('.wrapper');
+const bottomWrapper = document.querySelector('.bottom-wrapper');
 
 wrapper.style.display = 'none';
 endWrapper.style.display = 'none';
@@ -21,10 +21,10 @@ let isFirstTurnCompleted = null;
 let tries = null;
 let isColorMode = null;
 
-controlButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        rotate(event);
-    });
+bottomWrapper.addEventListener('click', (event) => {
+    if (event.target.tagName !== 'BUTTON') return;
+
+    rotate(event);
 });
 
 restartElement.addEventListener('click', () => {
