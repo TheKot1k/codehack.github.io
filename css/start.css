@@ -25,7 +25,6 @@ h1 span {
 }
 
 #number-input {
-    font-size: 24px;
     width: 20%;
 }
 
@@ -56,12 +55,7 @@ h1 span {
         font-size: 54px;
     }
 
-    h1 span {
-        margin: 0 -14px;
-    }
-
     #number-input {
-        /* font-size: 18px; */
         width: 30%;
     }
 
