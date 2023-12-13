@@ -9,6 +9,7 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
+    text-align: center;
     align-items: center;
     overflow-y: hidden;
     margin: 0;
@@ -48,38 +49,39 @@ button:active {
 }
 
 .dialog {
-    background: var(--black-more-transparent);
+    background: rgba(20, 20, 20, 0.95);
     border: 0;
-    padding: 16px 16px;
+    padding: 16px 24px;
     border-radius: 6px;
     margin-bottom: auto;
-}
-
-.dialog-wrapper {
     min-width: 300px;
     max-width: 500px;
     max-height: 500px;
+}
+
+.dialog-wrapper {
     font-size: 20px;
 }
 
-.dialog-wrapper h2 {
+.dialog-title {
     border-radius: 6px;
+    font-size: 26px;
     margin: 0;
 }
 
-.dialog-wrapper p {
+.dialog-text {
     padding: 0 16px;
     text-align: center;
 }
 
-.dialog-wrapper button {
-    background: rgb(73, 73, 73);
+.dialog-close {
+    background: rgb(49, 49, 49);
     margin: auto;
 }
 
 .dialog-wrapper button:hover,
 .dialog-wrapper button:active {
-    background: rgb(43, 43, 43);
+    background: rgb(36, 36, 36);
     cursor: pointer;
 }
 
@@ -91,5 +93,13 @@ button:active {
 
     .buttons-block button {
         font-size: 13px;
+    }
+
+    .dialog-wrapper {
+        font-size: 18px;
+    }
+
+    .dialog-title {
+        font-size: 22px;
     }
 }
