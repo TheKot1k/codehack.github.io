@@ -1,4 +1,3 @@
-const controlButtons = document.querySelectorAll('.buttons-block > button');
 const triesElement = document.querySelector('#tries');
 const codeElement = document.querySelector('#code');
 const restartElement = document.querySelector('#reset');
@@ -10,6 +9,12 @@ const initialElements = document.querySelectorAll('.cell');
 const startWrapper = document.querySelector('.start-wrapper');
 const endWrapper = document.querySelector('.end-wrapper');
 const wrapper = document.querySelector('.wrapper');
+const bottomWrapper = document.querySelector('.bottom-wrapper');
+
+const dialog = document.querySelector("dialog");
+const dialogTitle = document.querySelector("dialog h2");
+const dialogText = document.querySelector("dialog p");
+const closeButton = document.querySelector("dialog button");
 
 wrapper.style.display = 'none';
 endWrapper.style.display = 'none';
@@ -21,10 +26,14 @@ let isFirstTurnCompleted = null;
 let tries = null;
 let isColorMode = null;
 
-controlButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        rotate(event);
-    });
+closeButton.addEventListener("click", () => {
+    dialog.close();
+});
+
+bottomWrapper.addEventListener('click', (event) => {
+    if (event.target.tagName !== 'BUTTON') return;
+
+    rotate(event);
 });
 
 restartElement.addEventListener('click', () => {
@@ -36,6 +45,10 @@ startElement.addEventListener('click', () => {
 });
 
 function startGame() {
+    const isCorrectTries = enterTries();
+
+    if (!isCorrectTries) return;
+
     endWrapper.style.display = 'none';
     startWrapper.style.display = 'none';
     wrapper.style.display = 'block';
@@ -45,8 +58,6 @@ function startGame() {
     resetPositions();
 
     code = generateCode();
-
-    enterTries();
 
     moveRandom();
     setTries();
@@ -156,9 +167,11 @@ function enterTries() {
     const isOutOfRange = tries > 100 || tries <= 0;
 
     if (isOutOfRange || isNaN(tries)) {
-        tries = 3;
-        alert('Некорректное значение! Установлено значение по умолчанию (3)');
+        showDialog('error', 'Введены некорректные значения')
+        return false;
     }
+
+    return true;
 }
 
 function setColors() {
@@ -263,4 +276,21 @@ function resetPositions() {
 function backToMenu() {
     endWrapper.style.display = 'none';
     startWrapper.style.display = 'flex';
+}
+
+function showDialog(type, text) {
+    switch (type) {
+        case 'error':
+            dialogTitle.textContent = '❗️Ошибка';
+            dialogTitle.style.background = 'rgba(255, 0, 0, 0.15)';
+            break;
+        case 'help':
+            dialogTitle.textContent = '⭐️ Совет';
+            dialogTitle.style.background = 'rgba(0, 128, 0, 0.15)';
+            break;
+    }
+
+    dialogText.textContent = text;
+
+    dialog.showModal();
 }
