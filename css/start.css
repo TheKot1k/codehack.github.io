@@ -1,7 +1,7 @@
 .start-wrapper {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
     min-width: 310px;
     animation: magnification 0.75s 0s;
     margin: 0 20px;
@@ -19,26 +19,20 @@ h1 img {
     margin: 0 -8px -3px -8px;
 }
 
-.number-wrapper,
-.color-wrapper {
+.actions-wrapper,
+.color-wrapper,
+.timer-wrapper,
+#start-button {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin: 0 10px;
+    width: 100%;
 }
 
-#number-input {
+#actions-input,
+#timer-input {
     width: 20%;
-}
-
-.number-field {
-    justify-content: space-between;
-    margin-right: 10px;
-    width: 100%;
-}
-
-.color-field {
-    justify-content: space-between;
-    margin-right: 10px;
-    width: 100%;
 }
 
 #color-input {
@@ -47,13 +41,26 @@ h1 img {
     height: 20px;
 }
 
+.actions-field,
+.color-field,
+.timer-field {
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 10px;
+}
+
+.color-field {
+    margin-right: 0;
+}
+
 #start-button {
-    margin: 0;
+    justify-content: center;
 }
 
 @media screen and (max-width: 680px) {
     h1 {
         font-size: 54px;
+        margin: 0 0 15px 0;
     }
 
     h1 img {
@@ -62,15 +69,17 @@ h1 img {
         margin: 0 -6px -3px -6px;
     }
 
-    #number-input {
-        width: 30%;
+    .block {
+        margin-bottom: 5px;
     }
 
-    .number-field {
+    .actions-field,
+    .timer-field {
         margin-right: 5px;
     }
 
-    .color-field {
-        margin-right: 5px;
+    #actions-input,
+    #timer-input {
+        width: 25%;
     }
 }

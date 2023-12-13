@@ -13,20 +13,24 @@
 <body>
     <div class="start-wrapper">
         <h1>C<img src="./img/lock.png" alt="">deHack</h1>
-        <div class="number-wrapper">
-            <div class="block number-field">🖱️ Количество действий</div>
-            <input id="number-input" class="block" type="number" value="3" min="1" max="100">
+        <div class="actions-wrapper">
+            <div class="block actions-field">🖱️ Количество действий</div>
+            <input id="actions-input" class="block" type="number" value="3" min="1" max="100">
+        </div>
+        <div class="timer-wrapper">
+            <div class="block timer-field">⏳️ Секунд на действие</div>
+            <input id="timer-input" class="block" type="number" value="0" min="0" max="60">
         </div>
         <div class="color-wrapper">
-            <div class="block color-field">🎨 Цветной режим</div>
-            <div class="block color-form">
+            <div class="block color-field">🎨 Цветной режим
                 <input id="color-input" type="checkbox">
             </div>
         </div>
-        <button id="start" class="block">⌨️ Начать</button>
+        <button id="start-button" class="block">⌨️ Начать</button>
     </div>
     <div class="wrapper">
         <div class="info-wrapper">
+            <div id="timer" class="block"></div>
             <div id="tries" class="block"></div>
             <div id="code" class="block"></div>
         </div>

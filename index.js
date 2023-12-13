@@ -1,8 +1,10 @@
+const timerElement = document.querySelector('#timer');
 const triesElement = document.querySelector('#tries');
 const codeElement = document.querySelector('#code');
+
 const restartElement = document.querySelector('#reset');
 const resultElement = document.querySelector('#result');
-const startElement = document.querySelector('#start');
+const startElement = document.querySelector('#start-button');
 
 const initialElements = document.querySelectorAll('.cell');
 
@@ -24,7 +26,10 @@ const selectedColors = {};
 let code = null;
 let isFirstTurnCompleted = null;
 let tries = null;
+let timerValue = null;
 let isColorMode = null;
+
+let timer = null;
 
 closeButton.addEventListener("click", () => {
     dialog.close();
@@ -40,18 +45,18 @@ restartElement.addEventListener('click', () => {
     backToMenu();
 });
 
-startElement.addEventListener('click', () => {
-    startGame();
-});
+startElement.addEventListener('click', startGame);
 
 function startGame() {
-    const isCorrectTries = enterTries();
+    const isCorrectTries = checkTries();
+    const isCorrectTimer = checkTimer();
 
-    if (!isCorrectTries) return;
+    if (!(isCorrectTries && isCorrectTimer)) return;
 
     endWrapper.style.display = 'none';
     startWrapper.style.display = 'none';
     wrapper.style.display = 'block';
+    timerElement.style.display = 'flex';
 
     isFirstTurnCompleted = false;
 
@@ -60,7 +65,8 @@ function startGame() {
     code = generateCode();
 
     moveRandom();
-    setTries();
+    setTimer();
+    updateTries();
 
     setColors();
 }
@@ -68,6 +74,8 @@ function startGame() {
 function generateCode() {
     const code = Math.random().toString(16).slice(2, 10).toUpperCase();
     const cells = document.querySelectorAll('.cell');
+
+    codeElement.innerHTML = '';
 
     for (let i = 0; i < code.length; ++i) {
         codeElement.innerHTML += `<span>${code[i]}</span>`;
@@ -158,11 +166,11 @@ function rotate(event) {
     actCells[indexOrd[2] + indexMod].after(actCells[indexOrd[3] + indexMod]);
 
     --tries;
-    setTries();
+    updateTries();
 }
 
-function enterTries() {
-    tries = document.querySelector('#number-input').value;
+function checkTries() {
+    tries = document.querySelector('#actions-input').value;
 
     const isOutOfRange = tries > 100 || tries <= 0;
 
@@ -172,6 +180,40 @@ function enterTries() {
     }
 
     return true;
+}
+
+function checkTimer() {
+    timerValue = Number(document.querySelector('#timer-input').value);
+
+    const isOutOfRange = timerValue > 60 || timerValue < 0;
+
+    if (isOutOfRange || isNaN(timerValue)) {
+        showDialog('error', 'Введены некорректные значения')
+        return false;
+    }
+
+    return true;
+}
+
+function setTimer() {
+    if (timerValue === 0) {
+        timerElement.style.display = 'none';
+        return;
+    }
+
+    let secs = timerValue;
+    timerElement.textContent = `Осталось ${secs}⏳️`;
+
+    timer = setInterval(function () {
+        timerElement.textContent = `Осталось ${secs}⏳️`;
+        --secs;
+
+        if (secs <= 0) {
+            clearInterval(timer);
+            tries = 0;
+            checkResult();
+        }
+    }, 1000);
 }
 
 function setColors() {
@@ -225,7 +267,7 @@ function setColors() {
     });
 }
 
-function setTries() {
+function updateTries() {
     triesElement.textContent = `Осталось ${tries}🖱️`;
 
     checkResult();
@@ -253,8 +295,10 @@ function checkResult() {
         if (isVictory) {
             resultElement.textContent = 'Победа! 🥳';
         } else {
-            resultElement.textContent = 'Неверно 💀';
+            resultElement.textContent = 'Поражение 💀';
         }
+
+        clearInterval(timer);
     }
 }
 

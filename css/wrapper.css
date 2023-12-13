@@ -3,17 +3,17 @@
     animation: magnification 0.75s 0s;
     min-width: 300px;
     margin: 0 20px;
+    text-align: center;
 }
 
 .info-wrapper {
     display: flex;
 }
 
-.panel {
-    display: flex;
-    flex-wrap: wrap;
-    width: 600px;
-    margin-bottom: 15px;
+#timer {
+    font-size: 24px;
+    margin-right: 10px;
+    width: 100%;
 }
 
 #tries {
@@ -23,6 +23,7 @@
 }
 
 #code {
+    font-size: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -31,6 +32,13 @@
     grid-template-areas:
         ". . . ."
         ". . . .";
+}
+
+.panel {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    margin-bottom: 15px;
 }
 
 .cell {
