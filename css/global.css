@@ -48,9 +48,9 @@ button:active {
 }
 
 .dialog {
-    background: var(--black-more-transparent);
+    background: var(--black-transparent);
     border: 0;
-    padding: 16px 16px;
+    padding: 16px 24px;
     border-radius: 6px;
     margin-bottom: auto;
 }
@@ -64,6 +64,7 @@ button:active {
 
 .dialog-wrapper h2 {
     border-radius: 6px;
+    font-size: 26px;
     margin: 0;
 }
 
