@@ -53,12 +53,12 @@ button:active {
     padding: 16px 24px;
     border-radius: 6px;
     margin-bottom: auto;
-}
-
-.dialog-wrapper {
     min-width: 300px;
     max-width: 500px;
     max-height: 500px;
+}
+
+.dialog-wrapper {
     font-size: 20px;
 }
 
@@ -92,5 +92,13 @@ button:active {
 
     .buttons-block button {
         font-size: 13px;
+    }
+
+    .dialog-wrapper {
+        font-size: 18px;
+    }
+
+    .dialog-wrapper h2 {
+        font-size: 22px;
     }
 }
