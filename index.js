@@ -11,10 +11,10 @@ const endWrapper = document.querySelector('.end-wrapper');
 const wrapper = document.querySelector('.wrapper');
 const bottomWrapper = document.querySelector('.bottom-wrapper');
 
-const dialog = document.querySelector("dialog");
-const dialogTitle = document.querySelector("dialog h2");
-const dialogText = document.querySelector("dialog p");
-const closeButton = document.querySelector("dialog button");
+const dialog = document.querySelector(".dialog");
+const dialogTitle = document.querySelector(".dialog-title");
+const dialogText = document.querySelector(".dialog-text");
+const closeButton = document.querySelector(".dialog-close");
 
 wrapper.style.display = 'none';
 endWrapper.style.display = 'none';

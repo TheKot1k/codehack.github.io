@@ -48,7 +48,7 @@ button:active {
 }
 
 .dialog {
-    background: var(--black-transparent);
+    background: rgba(20, 20, 20, 0.95);
     border: 0;
     padding: 16px 24px;
     border-radius: 6px;
@@ -62,25 +62,25 @@ button:active {
     font-size: 20px;
 }
 
-.dialog-wrapper h2 {
+.dialog-title {
     border-radius: 6px;
     font-size: 26px;
     margin: 0;
 }
 
-.dialog-wrapper p {
+.dialog-text {
     padding: 0 16px;
     text-align: center;
 }
 
-.dialog-wrapper button {
-    background: rgb(73, 73, 73);
+.dialog-close {
+    background: rgb(49, 49, 49);
     margin: auto;
 }
 
 .dialog-wrapper button:hover,
 .dialog-wrapper button:active {
-    background: rgb(43, 43, 43);
+    background: rgb(36, 36, 36);
     cursor: pointer;
 }
 
@@ -98,7 +98,7 @@ button:active {
         font-size: 18px;
     }
 
-    .dialog-wrapper h2 {
+    .dialog-title {
         font-size: 22px;
     }
 }
