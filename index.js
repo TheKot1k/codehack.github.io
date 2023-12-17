@@ -175,7 +175,7 @@ function checkTries() {
     const isOutOfRange = tries > 100 || tries <= 0;
 
     if (isOutOfRange || isNaN(tries)) {
-        showDialog('error', 'Введены некорректные значения')
+        showDialog('error', 'Количество действий должно быть в диапазоне [1:100]')
         return false;
     }
 
@@ -188,7 +188,7 @@ function checkTimer() {
     const isOutOfRange = timerValue > 60 || timerValue < 0;
 
     if (isOutOfRange || isNaN(timerValue)) {
-        showDialog('error', 'Введены некорректные значения')
+        showDialog('error', 'Значение таймера должно быть в диапазоне [0:60] секунд')
         return false;
     }
 
