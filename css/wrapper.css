@@ -10,20 +10,18 @@
     display: flex;
 }
 
-#timer {
-    font-size: 24px;
+.info-wrapper>div {
+    font-size: 20px;
     margin-right: 10px;
-    width: 100%;
 }
 
+#timer,
 #tries {
-    font-size: 24px;
-    margin-right: 10px;
     width: 100%;
 }
 
 #code {
-    font-size: 20px;
+    margin-right: 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -70,7 +68,12 @@
         height: 75px;
     }
 
-    #tries {
-        margin-right: 8px;
+    .info-wrapper>div {
+        margin-right: 5px;
+        font-size: 12px;
+    }
+
+    #code {
+        margin-right: 0;
     }
 }
