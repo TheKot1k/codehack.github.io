@@ -19,6 +19,10 @@ h1 img {
     margin: 0 -8px -3px -8px;
 }
 
+input:invalid {
+    outline: 2px solid var(--red);
+}
+
 .actions-wrapper,
 .color-wrapper,
 .timer-wrapper,
