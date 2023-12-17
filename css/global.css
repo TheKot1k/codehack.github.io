@@ -35,7 +35,10 @@ body {
 .buttons-block {
     display: flex;
     flex-direction: column;
-    margin: 0 2px;
+}
+
+button:last-child {
+    margin-bottom: 0;
 }
 
 button:hover,

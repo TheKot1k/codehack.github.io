@@ -36,7 +36,7 @@ closeButton.addEventListener("click", () => {
 });
 
 bottomWrapper.addEventListener('click', (event) => {
-    if (event.target.tagName !== 'BUTTON') return;
+    if (event.target && event.target.tagName !== 'BUTTON') return;
 
     rotate(event);
 });
