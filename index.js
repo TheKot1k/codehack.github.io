@@ -55,8 +55,8 @@ function startGame() {
 
     endWrapper.style.display = 'none';
     startWrapper.style.display = 'none';
-    wrapper.style.display = 'block';
-    timerElement.style.display = 'flex';
+    wrapper.style.display = '';
+    timerElement.style.display = '';
 
     isFirstTurnCompleted = false;
 
@@ -290,7 +290,7 @@ function checkResult() {
 
     if (isVictory || !tries) {
         wrapper.style.display = 'none';
-        endWrapper.style.display = 'flex';
+        endWrapper.style.display = '';
 
         if (isVictory) {
             resultElement.textContent = 'Победа! 🥳';
@@ -319,7 +319,7 @@ function resetPositions() {
 
 function backToMenu() {
     endWrapper.style.display = 'none';
-    startWrapper.style.display = 'flex';
+    startWrapper.style.display = '';
 }
 
 function showDialog(type, text) {

@@ -1,5 +1,5 @@
 .wrapper {
-    display: flex;
+    display: block;
     animation: magnification 0.75s 0s;
     min-width: 300px;
     margin: 0 20px;
